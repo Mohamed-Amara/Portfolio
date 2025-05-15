@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
           </div>
           <div className="flex space-x-4">
             <a 
-              href="https://github.com" 
+              href="https://github.com/Mohamed-Amara" 
               target="_blank" 
               rel="noopener noreferrer"
               className={`hover:${isDarkMode ? 'text-blue-400' : 'text-blue-600'} transition-colors duration-200`}
@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
               <Github className="w-5 h-5" />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/mohamed-amara-1b45752b4/" 
               target="_blank" 
               rel="noopener noreferrer"
               className={`hover:${isDarkMode ? 'text-blue-400' : 'text-blue-600'} transition-colors duration-200`}
@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a 
-              href="mailto:your.email@example.com" 
+              href="mailto:mamara@uwaterloo.ca" 
               className={`hover:${isDarkMode ? 'text-blue-400' : 'text-blue-600'} transition-colors duration-200`}
               aria-label="Email"
             >
