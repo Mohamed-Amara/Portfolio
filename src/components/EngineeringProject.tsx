@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Play } from 'lucide-react';
 
 interface ProjectSection {
@@ -21,37 +21,39 @@ export const EngineeringProject: React.FC<EngineeringProjectProps> = ({
   sections,
   isDarkMode
 }) => {
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+
   return (
     <div className={`rounded-lg overflow-hidden shadow-lg ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'}`}>
       <div className="p-6">
         <h3 className="text-2xl font-semibold text-center mb-6">{title}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {sections.map((section) => (
-            <div 
+            <div
               key={section.id}
-              className={`rounded-lg p-5 transition-all duration-300 ${
-                isDarkMode 
-                  ? 'bg-gray-700 hover:bg-gray-600' 
+              className={`rounded-lg p-5 transition-all duration-300 ${isDarkMode
+                  ? 'bg-gray-700 hover:bg-gray-600'
                   : 'bg-gray-100 hover:bg-gray-200'
-              }`}
+                }`}
             >
               <h4 className="text-xl font-medium mb-3 text-center">{section.title}</h4>
-              
+
               {section.imageSrc && !section.videoUrl && (
-                <div className="mb-4 overflow-hidden rounded-md">
-                  <img 
-                    src={section.imageSrc} 
-                    alt={`${section.title} illustration`} 
+                <div className="mb-4 overflow-hidden rounded-md cursor-pointer"
+                  onClick={() => setExpandedImage(section.imageSrc!)}>
+                  <img
+                    src={section.imageSrc}
+                    alt={`${section.title} illustration`}
                     className="w-full h-48 object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               )}
-              
+
               {section.videoUrl && section.thumbnailSrc && (
                 <div className="mb-4 relative overflow-hidden rounded-md group cursor-pointer">
                   <a href={section.videoUrl} target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src={section.thumbnailSrc} 
+                    <img
+                      src={section.thumbnailSrc}
                       alt={`${section.title} video thumbnail`}
                       className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -63,7 +65,7 @@ export const EngineeringProject: React.FC<EngineeringProjectProps> = ({
                   </a>
                 </div>
               )}
-              
+
               <ul className={`list-disc pl-5 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 {section.content.map((item, index) => (
                   <li key={index} className="mb-2">{item}</li>
@@ -73,6 +75,19 @@ export const EngineeringProject: React.FC<EngineeringProjectProps> = ({
           ))}
         </div>
       </div>
+      {expandedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 cursor-pointer"
+          onClick={() => setExpandedImage(null)}
+        >
+          <img
+            src={expandedImage}
+            alt="Expanded view"
+            className="max-w-full max-h-full rounded-lg shadow-lg"
+          />
+        </div>
+      )}
+
     </div>
   );
 };
