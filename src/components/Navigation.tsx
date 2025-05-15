@@ -14,8 +14,8 @@ export const Navigation: React.FC<NavigationProps> = ({
   const navItems = [
     { id: 'about', label: 'About Me' },
     { id: 'solidworks', label: 'SolidWorks' },
-    { id: 'autocad', label: 'AutoCAD' },
     { id: 'general', label: 'General Eng' },
+    { id: 'autocad', label: 'AutoCAD' },
   ];
 
   return (

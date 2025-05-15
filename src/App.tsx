@@ -10,7 +10,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 
 function App() {
   const [activeSection, setActiveSection] = useState('about');
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
